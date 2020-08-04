@@ -16,3 +16,4 @@ export class AppComponent {
   appTitle: string = 'Angular todo application';
 
 }
+

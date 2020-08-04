@@ -1,15 +1,22 @@
 import { Injectable } from "@angular/core";
 import { Todo } from "../app.component";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {tap} from "rxjs/operators";
 
 @Injectable({providedIn: 'root'})
 
 export class TodosService {
 
-  todos: Todo[] = [
-    {id: 1, title: 'Купить хлеб', completed: false, date: new Date()},
-    {id: 2, title: 'Купить веревку', completed: false, date: new Date()},
-    {id: 3, title: 'Купить мыло', completed: false, date: new Date()},
-  ]
+  todos: Todo[] = []
+
+  constructor(private http: HttpClient) {
+  }
+
+  fetchTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=3')
+      .pipe(tap(todos => this.todos = todos))
+}
 
   onToggle(id: number) {
     const idx = this.todos.findIndex(t => t.id === id);

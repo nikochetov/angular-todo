@@ -1,19 +1,21 @@
-<ul class="list-group" *ngIf="todosService.todos.length; else noTodos">
-  <li class="list-group-item" *ngFor="let todo of todosService.todos; let i = index">
-    <span [class.done]="todo.completed">
-      <input type="checkbox"
-             [checked]="todo.completed"
-             (change)="onChange(todo.id)">
-      <strong>{{i + 1}}</strong> {{todo.title}}
-    </span>
-    <small>{{todo.date | date: 'dd.MM.yyyy'}}</small>
-    <button type="button"
-            class="btn btn-primary"
-            (click)="removeTodo(todo.id)"
-    >&times;</button>
-  </li>
-</ul>
-<ng-template #noTodos>
-  <p>No todos</p>
-</ng-template>
-
+<div *ngIf="!loading">
+  <ul class="list-group" *ngIf="todosService.todos.length; else noTodos">
+    <li class="list-group-item" *ngFor="let todo of todosService.todos; let i = index">
+      <span [class.done]="todo.completed">
+        <input type="checkbox"
+               [checked]="todo.completed"
+               (change)="onChange(todo.id)">
+        <strong>{{i + 1}}</strong> {{todo.title}}
+      </span>
+      <small>{{todo.date | date: 'dd.MM.yyyy'}}</small>
+      <button type="button"
+              class="btn btn-primary"
+              (click)="removeTodo(todo.id)"
+      >&times;</button>
+    </li>
+  </ul>
+  <ng-template #noTodos>
+    <p>No todos</p>
+  </ng-template>
+</div>
+<p *ngIf="loading">Loading...</p>

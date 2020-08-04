@@ -10,12 +10,13 @@ import {delay} from "rxjs/operators";
 export class TodosComponent implements OnInit {
 
   loading: boolean = true;
+  searchString = '';
 
   constructor(public todosService: TodosService) { }
 
   ngOnInit(): void {
     this.todosService.fetchTodos()
-      .pipe(delay(2000))
+      .pipe(delay(1000))
       .subscribe(() => {
       this.loading = false;
     })

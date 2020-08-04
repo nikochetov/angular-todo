@@ -14,7 +14,7 @@ export class TodosService {
   }
 
   fetchTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=3')
+    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=10')
       .pipe(tap(todos => this.todos = todos))
 }
 

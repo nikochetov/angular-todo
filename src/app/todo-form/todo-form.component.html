@@ -4,5 +4,5 @@
          [(ngModel)]="title"
          (keydown.enter)="addTodo()"
   >
-  <button class="btn btn-primary" (click)="addTodo()">Add todo</button>
+  <button class="btn btn-primary" (click)="addTodo()" [disabled]="!title">Add todo</button>
 </div>

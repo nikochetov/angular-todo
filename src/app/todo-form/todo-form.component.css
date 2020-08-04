@@ -1,0 +1,12 @@
+.addTodo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+input {
+  flex-basis: 78%;
+}
+button {
+ flex-basis: 20%;
+}
